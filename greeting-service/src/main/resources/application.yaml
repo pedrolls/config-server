@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: greeting-service
+  ## Usando config server remoto
+  config:
+    import: optional:configserver:http://localhost:8888/
+  cloud: #Setando o profile para pegar conforme o idioma no config server
+    config:
+      profile: br
+#Coniguracao de propriedades local
+#greeting-service:
+#  greeting: "Ola!"
+#  default-value: "Mundo"
+#Actuator
+management:
+      endpoints:
+        web:
+          exposure:
+            include: '*'
+      endpoint:
+        health:
+          show-details: ALWAYS
+      #Expondo todos os endpoins
